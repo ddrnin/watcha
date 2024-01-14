@@ -13,7 +13,27 @@
 	font-size: $font-size;
 	color: #fff;
 	text-align: left;
+	@content;
 }
+$breakpoint-mobile: 335px;
+$breakpoint-tablet: 600px;
+$breakpoint-desktop: 1024px;
+@mixin desktop {
+	@media (min-width: #{$breakpoint-desktop}) {
+		@content;
+	}
+}
+@mixin tablet {
+	@media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
+		@content;
+	}
+}
+@mixin mobile {
+	@media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+		@content;
+	}
+}
+
 body {
 	background: #111;
 }
@@ -23,26 +43,60 @@ header {
 	background: #333;
 	position: fixed;
 	z-index: 999;
+	padding: 0 20px;
 	.header_wrap {
 		width: 100%;
 		max-width: 1280px;
 		margin: 0 auto;
-		padding: 0 20px;
 		height: 100%;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		@include main_font(var(--font-family500), 14px);
+		@include main_font(var(--font-family400), 16px);
 		.logo {
 			cursor: pointer;
 		}
 		.left_menu {
 			width: 100%;
 			margin-left: 45px;
-			li {
+			> li {
 				padding-right: 20px;
-				a {
-					padding: 15px 5px;
+				> a {
+					padding: 0px 5px;
+					height: 60px;
+					display: flex;
+					align-items: center;
+				}
+			}
+			.category {
+				position: relative;
+				&:hover .category_list {
+					display: block;
+				}
+				.category_list {
+					@include main_font(var(--font-family200), 14px);
+					position: absolute;
+					top: 100%;
+					left: 0;
+					background: #333;
+					padding: 15px;
+					width: 180px;
+					display: none;
+					p {
+						padding: 0 0 15px 0;
+						font-family: var(--font-family700);
+						border-bottom: 1px solid #636363;
+					}
+					li {
+						width: 100%;
+						a {
+							&:hover {
+								opacity: 0.8;
+							}
+							padding: 15px 0;
+							width: 100%;
+						}
+					}
 				}
 			}
 		}
@@ -66,12 +120,12 @@ header {
 	}
 }
 .main1 {
-	padding: 110px 0 0 0;
+	padding: 110px 20px 0;
+	overflow: hidden;
 	.main1_wrap {
 		@include main_font(var(--font-family700), 32px);
 		width: 100%;
 		max-width: 1280px;
-		padding: 0 20px;
 		margin: 0 auto;
 		> p {
 			padding: 0 0 20px 0;
@@ -79,7 +133,7 @@ header {
 		.slider {
 			position: relative;
 			.swiper-slide {
-				border-radius: 15px;
+				border-radius: 10px;
 				overflow: hidden;
 				&::after {
 					content: '';
@@ -94,6 +148,9 @@ header {
 				position: relative;
 				img {
 					width: 100%;
+					&.mb {
+						display: none;
+					}
 				}
 				.title {
 					position: absolute;
@@ -103,6 +160,10 @@ header {
 					padding: 40px;
 					.name {
 						max-width: 354px;
+						img {
+							max-width: 354px;
+							width: unset;
+						}
 					}
 					.sub {
 						font-size: 18px;
@@ -132,20 +193,101 @@ header {
 				width: 180px;
 				position: absolute;
 				bottom: 40px;
-				left: unset;
 				right: 40px;
+				left: unset;
+			}
+		}
+	}
+	@include tablet {
+		.main1_wrap {
+			> p {
+			}
+			.slider {
+				.swiper-slide {
+					img {
+					}
+					.title {
+						.name {
+						}
+						.sub {
+						}
+					}
+				}
+				.swiper-pagination-fraction {
+					font-size: 16px;
+				}
+				.swiper-scrollbar {
+					background: #fff;
+				}
+				.swiper-scrollbar .swiper-scrollbar-drag {
+				}
+				.swiper-scrollbar.swiper-scrollbar-horizontal {
+				}
+			}
+		}
+	}
+	@include mobile {
+		padding: 90px 10px 0;
+		.main1_wrap {
+			> p {
+				font-size: 24px;
+			}
+			.slider {
+				.swiper-slide {
+					img {
+						&.pc {
+							display: none;
+						}
+						&.mb {
+							display: block;
+						}
+					}
+					.title {
+						bottom: 0;
+						left: 50%;
+						transform: translateX(-50%);
+						z-index: 2;
+						padding: 0px 0 80px;
+						.name {
+							img {
+								max-width: 295px;
+								max-height: 64px;
+							}
+						}
+						.sub {
+							margin-top: 20px;
+							text-align: center;
+							font-size: 14px;
+						}
+					}
+				}
+				.swiper-pagination-fraction {
+					font-size: 14px;
+					right: 20px;
+					bottom: 40px;
+				}
+				.swiper-scrollbar {
+					background: #fff;
+				}
+				.swiper-scrollbar .swiper-scrollbar-drag {
+				}
+				.swiper-scrollbar.swiper-scrollbar-horizontal {
+					right: 20px;
+					bottom: 20px;
+					width: 100px;
+				}
 			}
 		}
 	}
 }
 .m2Ver {
-	padding: 80px 0 0 0;
+	padding: 80px 20px 0;
 	.m2Ver_wrap {
 		@include main_font(var(--font-family500), 20px);
 		width: 100%;
 		max-width: 1280px;
-		padding: 0 20px;
 		margin: 0 auto;
+
 		.slider2 {
 			margin-top: 20px;
 			overflow: hidden;
@@ -163,16 +305,32 @@ header {
 			}
 		}
 	}
+	@include tablet {
+		padding: 50px 0px 0 20px;
+		.m2Ver_wrap {
+			p {
+			}
+		}
+	}
+	@include mobile {
+		padding: 50px 0px 0 10px;
+		.m2Ver_wrap {
+			p {
+				font-size: 16px;
+			}
+		}
+	}
 }
 .main3 {
-	padding: 80px 0 0 0;
+	padding: 80px 20px 0;
+	overflow: hidden;
+
 	.main3_wrap {
 		@include main_font(var(--font-family500), 20px);
 		width: 100%;
 		p {
 			max-width: 1280px;
 			margin: 0 auto;
-			padding: 0 20px;
 		}
 		.slider3_1 {
 			margin-top: 20px;
@@ -201,14 +359,25 @@ header {
 			}
 		}
 	}
+	@include tablet {
+		padding: 50px 20px 0;
+	}
+	@include mobile {
+		padding: 50px 10px 0;
+		.main3_wrap {
+			p {
+				font-size: 16px;
+			}
+		}
+	}
 }
 .main6 {
-	padding: 80px 0 0 0;
+	padding: 80px 20px 0;
 	.main6_wrap {
 		@include main_font(var(--font-family500), 20px);
 		width: 100%;
 		max-width: 1280px;
-		padding: 0 20px;
+		// padding: 0 20px;
 		margin: 0 auto;
 		.slider6 {
 			margin-top: 20px;
@@ -252,21 +421,50 @@ header {
 			}
 		}
 	}
+	@include tablet {
+		padding: 50px 20px 0;
+	}
+	@include mobile {
+		padding: 50px 10px 0;
+		.main6_wrap {
+			p {
+				font-size: 16px;
+			}
+			.slider6 {
+				.swiper-slide {
+					.title {
+						.sub {
+							font-size: 12px;
+							font-family: var(--font-family300);
+						}
+						.name {
+							margin: 7px 0;
+							font-size: 16px;
+						}
+						.text {
+							font-family: var(--font-family200);
+							font-size: 12px;
+						}
+					}
+				}
+			}
+		}
+	}
 }
 .main7 {
-	padding: 80px 0 0 0;
+	padding: 80px 0 0px 0;
+	overflow: hidden;
 	.main7_wrap {
 		@include main_font(var(--font-family500), 20px);
 		width: 100%;
 		margin: 0 auto;
-		padding: 0 50px;
+		padding: 0 20px;
 		p {
 			max-width: 1280px;
 			margin: 0 auto;
-			padding: 0 20px;
 		}
 		.slider7 {
-			margin-top: 20px;
+			margin-top: 40px;
 			position: relative;
 			.swiper-slide {
 				border-radius: 5px;
@@ -276,23 +474,64 @@ header {
 				}
 				.imgNum {
 					position: absolute;
-					bottom: -40px;
-					left: -2.8vw;
+					top: -2vw;
+					left: 0px;
 					font-size: 5vw;
 					font-family: var(--font-family700);
+					color: #333;
+					-webkit-text-stroke: 1px white;
+				}
+			}
+		}
+	}
+	@include tablet {
+		padding: 50px 0px 0;
+		.main7_wrap {
+			p {
+			}
+			.slider7 {
+				.swiper-slide {
+					img {
+					}
+					.imgNum {
+						font-size: 65px;
+						top: -3.5vw;
+						left: 10px;
+					}
+				}
+			}
+		}
+	}
+	@include mobile {
+		padding: 50px 0px 0;
+		.main7_wrap {
+			padding: 0 10px;
+			p {
+				font-size: 16px;
+			}
+			.slider7 {
+				.swiper-slide {
+					img {
+					}
+					.imgNum {
+						font-size: 12vw;
+						top: -6.5vw;
+						left: 10px;
+					}
 				}
 			}
 		}
 	}
 }
+
 footer {
 	margin-top: 80px;
 	background: #333;
+	padding: 50px 20px;
 	@include main_font(var(--font-family500), 14px);
 	.footer_wrap {
 		max-width: 1280px;
 		margin: 0 auto;
-		padding: 50px 20px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

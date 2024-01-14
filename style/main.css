@@ -19,18 +19,18 @@ header {
   background: #333;
   position: fixed;
   z-index: 999;
+  padding: 0 20px;
 }
 header .header_wrap {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--font-family500);
-  font-size: 14px;
+  font-family: var(--font-family400);
+  font-size: 16px;
   color: #fff;
   text-align: left;
 }
@@ -41,11 +41,48 @@ header .header_wrap .left_menu {
   width: 100%;
   margin-left: 45px;
 }
-header .header_wrap .left_menu li {
+header .header_wrap .left_menu > li {
   padding-right: 20px;
 }
-header .header_wrap .left_menu li a {
-  padding: 15px 5px;
+header .header_wrap .left_menu > li > a {
+  padding: 0px 5px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+header .header_wrap .left_menu .category {
+  position: relative;
+}
+header .header_wrap .left_menu .category:hover .category_list {
+  display: block;
+}
+header .header_wrap .left_menu .category .category_list {
+  font-family: var(--font-family200);
+  font-size: 14px;
+  color: #fff;
+  text-align: left;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #333;
+  padding: 15px;
+  width: 180px;
+  display: none;
+}
+header .header_wrap .left_menu .category .category_list p {
+  padding: 0 0 15px 0;
+  font-family: var(--font-family700);
+  border-bottom: 1px solid #636363;
+}
+header .header_wrap .left_menu .category .category_list li {
+  width: 100%;
+}
+header .header_wrap .left_menu .category .category_list li a {
+  padding: 15px 0;
+  width: 100%;
+}
+header .header_wrap .left_menu .category .category_list li a:hover {
+  opacity: 0.8;
 }
 header .header_wrap .right_menu {
   width: 100%;
@@ -66,7 +103,8 @@ header .header_wrap .right_menu li .sign {
 }
 
 .main1 {
-  padding: 110px 0 0 0;
+  padding: 110px 20px 0;
+  overflow: hidden;
 }
 .main1 .main1_wrap {
   font-family: var(--font-family700);
@@ -75,7 +113,6 @@ header .header_wrap .right_menu li .sign {
   text-align: left;
   width: 100%;
   max-width: 1280px;
-  padding: 0 20px;
   margin: 0 auto;
 }
 .main1 .main1_wrap > p {
@@ -85,7 +122,7 @@ header .header_wrap .right_menu li .sign {
   position: relative;
 }
 .main1 .main1_wrap .slider .swiper-slide {
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
   position: relative;
 }
@@ -102,6 +139,9 @@ header .header_wrap .right_menu li .sign {
 .main1 .main1_wrap .slider .swiper-slide img {
   width: 100%;
 }
+.main1 .main1_wrap .slider .swiper-slide img.mb {
+  display: none;
+}
 .main1 .main1_wrap .slider .swiper-slide .title {
   position: absolute;
   bottom: 0;
@@ -111,6 +151,10 @@ header .header_wrap .right_menu li .sign {
 }
 .main1 .main1_wrap .slider .swiper-slide .title .name {
   max-width: 354px;
+}
+.main1 .main1_wrap .slider .swiper-slide .title .name img {
+  max-width: 354px;
+  width: unset;
 }
 .main1 .main1_wrap .slider .swiper-slide .title .sub {
   font-size: 18px;
@@ -138,12 +182,63 @@ header .header_wrap .right_menu li .sign {
   width: 180px;
   position: absolute;
   bottom: 40px;
-  left: unset;
   right: 40px;
+  left: unset;
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .main1 .main1_wrap .slider .swiper-pagination-fraction {
+    font-size: 16px;
+  }
+  .main1 .main1_wrap .slider .swiper-scrollbar {
+    background: #fff;
+  }
+}
+@media (min-width: 335px) and (max-width: 599px) {
+  .main1 {
+    padding: 90px 10px 0;
+  }
+  .main1 .main1_wrap > p {
+    font-size: 24px;
+  }
+  .main1 .main1_wrap .slider .swiper-slide img.pc {
+    display: none;
+  }
+  .main1 .main1_wrap .slider .swiper-slide img.mb {
+    display: block;
+  }
+  .main1 .main1_wrap .slider .swiper-slide .title {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    padding: 0px 0 80px;
+  }
+  .main1 .main1_wrap .slider .swiper-slide .title .name img {
+    max-width: 295px;
+    max-height: 64px;
+  }
+  .main1 .main1_wrap .slider .swiper-slide .title .sub {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+  .main1 .main1_wrap .slider .swiper-pagination-fraction {
+    font-size: 14px;
+    right: 20px;
+    bottom: 40px;
+  }
+  .main1 .main1_wrap .slider .swiper-scrollbar {
+    background: #fff;
+  }
+  .main1 .main1_wrap .slider .swiper-scrollbar.swiper-scrollbar-horizontal {
+    right: 20px;
+    bottom: 20px;
+    width: 100px;
+  }
 }
 
 .m2Ver {
-  padding: 80px 0 0 0;
+  padding: 80px 20px 0;
 }
 .m2Ver .m2Ver_wrap {
   font-family: var(--font-family500);
@@ -152,7 +247,6 @@ header .header_wrap .right_menu li .sign {
   text-align: left;
   width: 100%;
   max-width: 1280px;
-  padding: 0 20px;
   margin: 0 auto;
 }
 .m2Ver .m2Ver_wrap .slider2 {
@@ -171,9 +265,23 @@ header .header_wrap .right_menu li .sign {
   width: 100%;
   transition: 0.3s;
 }
+@media (min-width: 600px) and (max-width: 1023px) {
+  .m2Ver {
+    padding: 50px 0px 0 20px;
+  }
+}
+@media (min-width: 335px) and (max-width: 599px) {
+  .m2Ver {
+    padding: 50px 0px 0 10px;
+  }
+  .m2Ver .m2Ver_wrap p {
+    font-size: 16px;
+  }
+}
 
 .main3 {
-  padding: 80px 0 0 0;
+  padding: 80px 20px 0;
+  overflow: hidden;
 }
 .main3 .main3_wrap {
   font-family: var(--font-family500);
@@ -185,7 +293,6 @@ header .header_wrap .right_menu li .sign {
 .main3 .main3_wrap p {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 .main3 .main3_wrap .slider3_1 {
   margin-top: 20px;
@@ -213,9 +320,22 @@ header .header_wrap .right_menu li .sign {
 .main3 .main3_wrap .slider3_2 .swiper-slide img {
   width: 100%;
 }
+@media (min-width: 600px) and (max-width: 1023px) {
+  .main3 {
+    padding: 50px 20px 0;
+  }
+}
+@media (min-width: 335px) and (max-width: 599px) {
+  .main3 {
+    padding: 50px 10px 0;
+  }
+  .main3 .main3_wrap p {
+    font-size: 16px;
+  }
+}
 
 .main6 {
-  padding: 80px 0 0 0;
+  padding: 80px 20px 0;
 }
 .main6 .main6_wrap {
   font-family: var(--font-family500);
@@ -224,7 +344,6 @@ header .header_wrap .right_menu li .sign {
   text-align: left;
   width: 100%;
   max-width: 1280px;
-  padding: 0 20px;
   margin: 0 auto;
 }
 .main6 .main6_wrap .slider6 {
@@ -265,9 +384,35 @@ header .header_wrap .right_menu li .sign {
 .main6 .main6_wrap .slider6 .swiper-slide .title .text {
   font-family: var(--font-family200);
 }
+@media (min-width: 600px) and (max-width: 1023px) {
+  .main6 {
+    padding: 50px 20px 0;
+  }
+}
+@media (min-width: 335px) and (max-width: 599px) {
+  .main6 {
+    padding: 50px 10px 0;
+  }
+  .main6 .main6_wrap p {
+    font-size: 16px;
+  }
+  .main6 .main6_wrap .slider6 .swiper-slide .title .sub {
+    font-size: 12px;
+    font-family: var(--font-family300);
+  }
+  .main6 .main6_wrap .slider6 .swiper-slide .title .name {
+    margin: 7px 0;
+    font-size: 16px;
+  }
+  .main6 .main6_wrap .slider6 .swiper-slide .title .text {
+    font-family: var(--font-family200);
+    font-size: 12px;
+  }
+}
 
 .main7 {
-  padding: 80px 0 0 0;
+  padding: 80px 0 0px 0;
+  overflow: hidden;
 }
 .main7 .main7_wrap {
   font-family: var(--font-family500);
@@ -276,15 +421,14 @@ header .header_wrap .right_menu li .sign {
   text-align: left;
   width: 100%;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 0 20px;
 }
 .main7 .main7_wrap p {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 .main7 .main7_wrap .slider7 {
-  margin-top: 20px;
+  margin-top: 40px;
   position: relative;
 }
 .main7 .main7_wrap .slider7 .swiper-slide {
@@ -296,15 +440,44 @@ header .header_wrap .right_menu li .sign {
 }
 .main7 .main7_wrap .slider7 .swiper-slide .imgNum {
   position: absolute;
-  bottom: -40px;
-  left: -2.8vw;
+  top: -2vw;
+  left: 0px;
   font-size: 5vw;
   font-family: var(--font-family700);
+  color: #333;
+  -webkit-text-stroke: 1px white;
+}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .main7 {
+    padding: 50px 0px 0;
+  }
+  .main7 .main7_wrap .slider7 .swiper-slide .imgNum {
+    font-size: 65px;
+    top: -3.5vw;
+    left: 10px;
+  }
+}
+@media (min-width: 335px) and (max-width: 599px) {
+  .main7 {
+    padding: 50px 0px 0;
+  }
+  .main7 .main7_wrap {
+    padding: 0 10px;
+  }
+  .main7 .main7_wrap p {
+    font-size: 16px;
+  }
+  .main7 .main7_wrap .slider7 .swiper-slide .imgNum {
+    font-size: 12vw;
+    top: -6.5vw;
+    left: 10px;
+  }
 }
 
 footer {
   margin-top: 80px;
   background: #333;
+  padding: 50px 20px;
   font-family: var(--font-family500);
   font-size: 14px;
   color: #fff;
@@ -313,7 +486,6 @@ footer {
 footer .footer_wrap {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 50px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
